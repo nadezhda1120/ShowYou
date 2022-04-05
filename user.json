@@ -1,0 +1,35 @@
+[
+    {
+        "id": "ad15ad9d-b4f2-11ec-830b-900f0c431cac",
+        "email": "nadezhdapa@gmail.com",
+        "username": "nadhioe",
+        "first_name": "Nadezhda",
+        "last_name": "Pandelieva",
+        "password": "15264",
+        "role": "USER",
+        "image": "image.png",
+        "active": true
+    },
+    {
+        "id": "ad15ad9e-b4f2-11ec-b767-900f0c431cac",
+        "email": "ipopopv@abv.bg",
+        "username": "iv5941",
+        "first_name": "Ivan",
+        "last_name": "Popov",
+        "password": "154896",
+        "role": "USER",
+        "image": "image.png",
+        "active": true
+    },
+    {
+        "id": "ad15ad9f-b4f2-11ec-805d-900f0c431cac",
+        "email": "gg_200@gmail.com",
+        "username": "gg_2051",
+        "first_name": "Georgi",
+        "last_name": "Georgiev",
+        "password": "6384VCGHJK",
+        "role": "USER",
+        "image": "image.png",
+        "active": true
+    }
+]
