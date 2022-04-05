@@ -1,1 +1,1 @@
-# Final project about StrypesLab course Python
+# Final project for StrypesLab course with Python
