@@ -15,21 +15,34 @@ class ProjectController:
     #     self._project_repository.save()
     #     # thinking about making list of projects represented by dictionary
 
-    #how to connect project with author
     def create_project(self, project: Project):
+        # TODO validation
         project.author = self._current_user.username
         self._project_repository.create(project)
         self._project_repository.save()
 
-    def edit_project(self, project):
-        pass
+    def edit_project(self, project: Project, updated_project: Project):
+        #self._project_repository.find_by_id(project.id)
+        project.description = updated_project.description
+        project.title = updated_project.title
+        project.images = updated_project.images
+        project.tags = updated_project.tags
+        project.subject =updated_project.subject
+        self._project_repository.update(project)
+        self.save_project()
 
     def delete_project(self, project: Project):
+        self._project_repository.load()
         self._project_repository.delete_by_id(project.id)
+        self.save_project()
 
     #should implement delete_project by title, author
+
     def add_comment(self, comment: Comment):
         pass
+        comment.authorID = self._current_user.id
+        #comment.projectID =
+
 
     def edit_comment(self):
         pass
@@ -37,8 +50,6 @@ class ProjectController:
     def delete_comment(self):
         pass
 
-    def add_like(self):
-        pass
 
     def print_all_projects(self):
         for project in self._project_repository.find_all():

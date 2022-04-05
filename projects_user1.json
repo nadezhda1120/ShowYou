@@ -1,0 +1,44 @@
+[
+    {
+        "id": "eb1b0566-b5c6-11ec-bb3f-900f0c431cac",
+        "title": "Lord of the Ring",
+        "description": "Sceens of the film",
+        "author": "nadhioe",
+        "dateCreated": "06/04/2022 19:30:49",
+        "subject": "Film",
+        "tags": [
+            "film",
+            "ring",
+            "lord",
+            "awesome"
+        ],
+        "images": [
+            "image1.png",
+            "image2.pg",
+            "imageo3.png"
+        ],
+        "likes": 0
+    },
+    {
+        "id": "eb1b2be7-b5c6-11ec-b82f-900f0c431cac",
+        "title": "Day in Paris",
+        "description": "These are pictures of my Erasmus project in Paris.",
+        "author": "nadhioe",
+        "dateCreated": "06/04/2022 19:30:49",
+        "subject": "landscape",
+        "tags": [
+            "Paris",
+            "sun",
+            "friends",
+            "feeling",
+            "image",
+            "good"
+        ],
+        "images": [
+            "image1.png",
+            "image2.png",
+            "image3.png"
+        ],
+        "likes": 0
+    }
+]

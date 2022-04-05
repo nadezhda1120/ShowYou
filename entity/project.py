@@ -17,11 +17,11 @@ class Project:
         self.title = title
         self.description = description
         self.author = author
-        self.dateCreated = Project.now.strftime("%d/%m/%Y %H:%M:%S")
+        self.dateCreated = self.__class__.now.strftime("%d/%m/%Y %H:%M:%S")
         self.subject = subject
         self.tags = tags
         self.images = images
-        self._likes = None
+        self.likes = 0
 
         #self._idProject = self.__class__.next_id
         #section
@@ -38,4 +38,4 @@ class Project:
 
 
     def __str__(self):
-        return  f"| {self.id} | {str(self.title):20s} | {str(self.author):10s} | {str(self.images)} | {', '.join(self.tags):>30.30s} |"
+        return  f"| {self.id} | {str(self.title):20s} | {str(self.author):10s} | {self.description} | {str(self.images)} | {', '.join(self.tags)} |"

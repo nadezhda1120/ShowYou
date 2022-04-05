@@ -1,9 +1,9 @@
 from controller.project_controller import ProjectController
-from dao.project_repository import ProjectRepository
 from dao.user_repository import UserRepository
 from dao.project_repository import ProjectRepository
 from entity.project import Project
 from entity.registered_user import RegisteredUser
+from view.comment import Comment
 
 if __name__ == '__main__':
     user1 = RegisteredUser('Nadezhda', 'Pandelieva', 'nadhioe', 'nadezhdapa@gmail.com', '15264', 'image.png')
@@ -34,49 +34,40 @@ if __name__ == '__main__':
     p3 = Project('Lord of the Ring', 'Sceens of the film', ['image1.png', 'image2.pg', 'imageo3.png'], 'Film',
                  ['film', 'ring', 'lord', 'awesome'])
     p = [p1, p3, p4]
-    project_repo = ProjectRepository("projects.json", Project)
-    pr_controller1 = ProjectController(user1, project_repo)
-    pr_controller2 = ProjectController(user2, project_repo)
-    #
-    # print("Projects")
-    # pr_controller1.create_project(p1)
-    # pr_controller2.create_project(p3)
-    #
-    # for pr in project_repo.find_all():
-    #     print(pr)
+    project_repo1 = ProjectRepository("projects_user1.json", Project)
+    project_repo2 = ProjectRepository("projects_user2.json", Project)
+    pr_controller1 = ProjectController(user1, project_repo1)
+    pr_controller2 = ProjectController(user2, project_repo2)
 
-    #pr_controller1.print_all_projects()
-    print("After deleting")
-    project_repo.load()
-    pr_controller1.delete_project(p3)
+    print("Projects")
+    pr_controller1.create_project(p1)
+    pr_controller1.create_project(p3)
+    pr_controller1.create_project(p4)
+    pr_controller2.create_project(p3)
+    pr_controller2.create_project(p4)
+
     pr_controller1.print_all_projects()
-    # user1.create_project(p1)
-    # user1.print_all_projects()
 
 
-    for project in project_repo.find_by_tag("image"):
+    print("After deleting")
+    pr_controller1.delete_project(p1)
+    pr_controller1.print_all_projects()
+
+    print("Found by tag")
+    for project in project_repo1.find_by_tag("image"):
         print(project)
 
+    print("Before editing")
+    pr_controller2.print_all_projects()
+    print("After editing")
+    p3_edit = Project('Lord of the Ring', 'Magical night with the Lord of the Ring', ['image1.png', 'image2.pg', 'image4.png'], 'Film',
+                 ['film', 'ring', 'lord', 'awesome'])
+    pr_controller2.edit_project(p3,p3_edit)
+    pr_controller2.print_all_projects()
 
-    # user1 = RegisteredUser('Nadezhda', 'Pandelieva','nadhioe','nadezhdapa@gmail.com', '15264', 'image.png')
-    # user2 = RegisteredUser('Ivan', 'Popov', 'iv5941', 'ipopopv@abv.bg', '154896', 'image.png')
-    # user3 = RegisteredUser('Georgi', 'Georgiev', 'gg_2051' ,'gg_200@gmail.com', '6384VCGHJK', 'image.png')
+    print("Comment test ")
+    c1 = Comment("Very Nice details of the logo")
+    pr_controller1.add_comment(c1)
+    print(c1)
     # ###, title, description,  images, subject = None, tags = None, likes = None,author = None
-    #
-    # p1 = Project('Rare Ware', 'Photo Session of Rare Ware sunglasses',['image1.png', 'image2.pg', 'imageo3.pngf'] , 'Sunglasses', ['sunglasses', 'friends', 'product', 'red'])
-    # p2 = Project('Tool Box', 'Photo Session of Tool Box',['image1.png', 'image2.pg', 'imageo3.pngf'] , 'Box', ['tool', 'box', 'amazon', 'advertisment', 'new'])
-    # p3 = Project('Lord of the Ring', 'Sceens of the film',['image1.png', 'image2.pg', 'imageo3.png'] , 'Film', ['film', 'ring', 'lord', 'awesome'])
-    # projects = [p1, p2, p3]
-    #
-    #
-    # project_repo = ProjectRepository("project.json", Project)
-    #
-    # for p in projects:
-    #     project_repo.create(p)
-    #
-    # for project in project_repo.find_all():
-    #     print(project)
-    #
-    # print('Finded project: ', project_repo.find_by_tag('box'))
-    # #project_repo.save()
-    #
+
