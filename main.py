@@ -65,9 +65,15 @@ if __name__ == '__main__':
     pr_controller2.edit_project(p3,p3_edit)
     pr_controller2.print_all_projects()
 
-    print("Comment test ")
+    print("Add comment")
     c1 = Comment("Very Nice details of the logo")
-    pr_controller1.add_comment(c1)
-    print(c1)
+    c2 = Comment("Good job")
+    pr_controller1.add_comment(user3, c1, p3)
+    pr_controller1.add_comment(user3, c2, p3)
+    pr_controller1.print_all_project_comments(p3)
+    c1_edit = Comment("Very neat work")
+    print("Edited comment")
+    pr_controller1.edit_comment(c1, c1_edit)
+    pr_controller1.print_all_project_comments(p3)
     # ###, title, description,  images, subject = None, tags = None, likes = None,author = None
 

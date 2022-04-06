@@ -1,10 +1,10 @@
 [
     {
-        "id": "eb1b0566-b5c6-11ec-bb3f-900f0c431cac",
+        "id": "51abd37c-b5d2-11ec-a13f-900f0c431cac",
         "title": "Lord of the Ring",
         "description": "Magical night with the Lord of the Ring",
         "author": "iv5941",
-        "dateCreated": "06/04/2022 19:30:49",
+        "dateCreated": "06/04/2022 20:52:25",
         "subject": "Film",
         "tags": [
             "film",
@@ -17,14 +17,15 @@
             "image2.pg",
             "image4.png"
         ],
-        "likes": 0
+        "likes": 0,
+        "comments": []
     },
     {
-        "id": "eb1b2be7-b5c6-11ec-b82f-900f0c431cac",
+        "id": "51abfa73-b5d2-11ec-90b0-900f0c431cac",
         "title": "Day in Paris",
         "description": "These are pictures of my Erasmus project in Paris.",
         "author": "iv5941",
-        "dateCreated": "06/04/2022 19:30:49",
+        "dateCreated": "06/04/2022 20:52:25",
         "subject": "landscape",
         "tags": [
             "Paris",
@@ -39,6 +40,7 @@
             "image2.png",
             "image3.png"
         ],
-        "likes": 0
+        "likes": 0,
+        "comments": []
     }
 ]
