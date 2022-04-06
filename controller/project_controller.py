@@ -30,8 +30,7 @@ class ProjectController:
         current_project.images = edited_project.images
         current_project.tags = edited_project.tags
         current_project.subject =edited_project.subject
-        self._project_repository.update(current_project)
-        self.save_project()
+        self.update_project(current_project)
 
     def delete_project(self, project: Project):
         self._project_repository.load()
@@ -44,23 +43,29 @@ class ProjectController:
         comment.creator = user.username
         comment.commentID = self.__class__.comment_id_generator.get_next_id()
         project.comments.append(comment)
-        self._project_repository.update(project)
-        self.save_project()
+        self.update_project(project)
 
     def edit_comment(self, current_comment: Comment, edited_comment: Comment):
-        #self._project_repository.load()
-        def find_project_by_id_comment(c_id):
+        def update_project_comment(c_id):
             for project in self._project_repository.find_all():
                 for comment in project.comments:
                     if c_id == comment.commentID:
                         comment.content = edited_comment.content
-                        self._project_repository.update(project)
-                        self.save_project()
-        find_project_by_id_comment(current_comment.commentID)
+                        self.update_project(project)
+        update_project_comment(current_comment.commentID)
 
 
-    def delete_comment(self):
-        pass
+    def delete_comment(self,user: RegisteredUser, comment: Comment):
+        # TODO fix the error
+        for project in self._project_repository.find_all():
+            for c in project.comments:
+                print(f'{type(comment.content)} |  {type(user.username)}')
+                if str(comment.content) == str(c.content) & str(user.username) == str(c.creator):
+                    project.comments.remove(c)
+                    self.update_project(project)
+                else:
+                    print("not found")
+                    #raise Exception
 
 
     def print_all_projects(self):
@@ -72,6 +77,10 @@ class ProjectController:
 
     def save_project(self):
         self._project_repository.save()
+
+    def update_project(self, project):
+        self._project_repository.update(project)
+        self.save_project()
 
 
 

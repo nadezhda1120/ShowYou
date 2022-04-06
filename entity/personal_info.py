@@ -28,6 +28,6 @@ class PersonalInfo:
     #     return repr
 
     def __str__(self):
-        return f'|{str(self.id):10s} | {self.first_name:10s} |  {self.last_name:10s} | { self.username:15s} | {str(self.role):5s} | '
+        return f'|{str(self.id):10s} | {self.first_name:10s} |  {self.last_name:10s} | { self.username:15s} | {self.password} | {str(self.role):5s}'
 
 

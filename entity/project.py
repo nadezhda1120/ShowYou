@@ -38,7 +38,7 @@ class Project:
 
 
     def __str__(self):
-        return  f"| {self.id} | {str(self.title):20s} | {str(self.author):10s} | {self.description} | {str(self.images)} | {', '.join(self.tags)} |"
+        return  f"| {self.id} | {str(self.title):20s} | {str(self.author):10s} | {self.description} | {str(self.likes)} | {str(self.images)} | {', '.join(self.tags)} |"
 
     def print_comments(self):
         for comment in self.comments:

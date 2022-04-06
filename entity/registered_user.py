@@ -25,18 +25,6 @@ class RegisteredUser(PersonalInfo):
         return f'{super().__str__()} | {str(self.image)} | {self.active} | '
 
 
-    # def create_project(self,project: Project):
-    #     #project = Project(title, description, images, subject, tags)
-    #     project.author = self.username
-    #     self._project_repository.create(project)
-    #     self._project_repository.save()
-    #     #thinking about making list of projects represented by dictionary
-
-
-    # def print_all_projects(self):
-    #     for project in self._project_repository.find_all():
-    #         print(project)
-
 
 
 
