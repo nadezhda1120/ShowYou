@@ -9,7 +9,7 @@ class UserController:
     def __init__(self, user_repo: UserRepository):
         self._user_repository = user_repo
 
-    #about admin
+    #about admin functionality
 
     def add_user(self, user: RegisteredUser):
         self._user_repository.create(user)
