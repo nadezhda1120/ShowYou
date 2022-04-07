@@ -1,10 +1,12 @@
-from controller.project_controller import ProjectController
-from controller.user_controller import UserController
+from controller.project_controller import ProjectService
+from controller.user_controller import UserService
 from dao.user_repository import UserRepository
 from dao.project_repository import ProjectRepository
 from entity.project import Project
 from entity.registered_user import RegisteredUser
 from view.comment import Comment
+from service.user_service import UserService
+from service.project_service import ProjectService
 
 if __name__ == '__main__':
     user1 = RegisteredUser('Nadezhda', 'Pandelieva', 'nadezhda1106', 'nadezhdapa@gmail.com', '15264', 'image.png')
@@ -13,7 +15,7 @@ if __name__ == '__main__':
     users = [user1, user2, user3]
 
     users_repo = UserRepository("user.json", RegisteredUser)
-    user_controller = UserController(users_repo)
+    user_controller = UserService(users_repo)
     user_controller.add_user(user1)
     user_controller.add_user(user2)
     user_controller.print_all_users()
@@ -35,8 +37,8 @@ if __name__ == '__main__':
     p = [p1, p3, p4]
     project_repo1 = ProjectRepository("projects_user1.json", Project)
     project_repo2 = ProjectRepository("projects_user2.json", Project)
-    pr_controller1 = ProjectController(user1, project_repo1)
-    pr_controller2 = ProjectController(user2, project_repo2)
+    pr_controller1 = ProjectService(user1, project_repo1)
+    pr_controller2 = ProjectService(user2, project_repo2)
 
     print("Projects")
     pr_controller1.create_project(p1)
