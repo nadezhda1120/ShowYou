@@ -9,5 +9,5 @@ def find(predicate: Callable[[object], bool], iterable: Iterable[object]) -> obj
     for item in iterable:
         if predicate(item):
             return item
-    #return None
-    return ExceptionNotFounded
+    #return ExceptionNotFounded
+    return None

@@ -4,6 +4,10 @@ from entity.project import Project
 from entity.registered_user import RegisteredUser
 
 
+class UserAlreadyExist(Exception):
+    pass
+
+
 class UserController:
 
     def __init__(self, user_repo: UserRepository):
@@ -12,8 +16,15 @@ class UserController:
     #about admin functionality
 
     def add_user(self, user: RegisteredUser):
-        self._user_repository.create(user)
-        self._user_repository.save()
+        # when user.json is empty and I try to add new user it raise error because of self._user_repository.load()
+        self._user_repository.load()
+        if self._user_repository.find_by_username(user.username) == None:
+            self._user_repository.create(user)
+            self._user_repository.save()
+        else:
+            print("User with this username already exist")
+            #raise UserAlreadyExist(self._user_repository.find_by_username(user.username))
+
 
     def edit_user_data(self,user: RegisteredUser):
         # what if someone want to change his username
