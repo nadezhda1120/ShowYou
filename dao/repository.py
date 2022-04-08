@@ -22,7 +22,7 @@ class Repository:
         #self._id_generator
 
     def __add__(self, other):
-        self._entities.update(other._entities)
+        self._items.update(other._items)
         return self
 
     def create(self, item):
@@ -63,6 +63,7 @@ class Repository:
 
     def count(self):
         return len(self._items)
+
 
     #
     # #do I need it here

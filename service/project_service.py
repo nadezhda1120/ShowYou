@@ -17,6 +17,10 @@ class ProjectService:
     #     self._project_repository.create(project)
     #     self._project_repository.save()
     #     # thinking about making list of projects represented by dictionary
+    def __add__(self, other):
+        for project in other._project_repository:
+            self.update_project(project)
+
 
     def create_project(self, project: Project):
         # TODO validation
@@ -69,8 +73,10 @@ class ProjectService:
 
 
     def print_all_projects(self):
+        self._project_repository.load()
         for project in self._project_repository.find_all():
             print(project)
+            #return project
 
     def print_all_project_comments(self, project: Project):
         project.print_comments()
@@ -82,5 +88,14 @@ class ProjectService:
         self._project_repository.update(project)
         self.save_project()
 
+
+    def view_top_10(self):
+        self._project_repository.load()
+        sorted_projects = sorted(self._project_repository.find_all(), key = lambda i: i.likes, reverse=True)
+        for index, p in enumerate(sorted_projects):
+            if index != 10:
+                print(p)
+            else:
+                break
 
 

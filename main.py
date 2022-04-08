@@ -15,18 +15,18 @@ if __name__ == '__main__':
     users = [user1, user2, user3]
 
     users_repo = UserRepository("user.json", RegisteredUser)
-    user_controller = UserService(users_repo)
-    user_controller.add_user(user1)
-    user_controller.add_user(user2)
-    user_controller.print_all_users()
+    user_service = UserService(users_repo)
+    user_service.add_user(user1)
+    user_service.add_user(user2)
+    user_service.print_all_users()
     #user_controller.delete_user(user1)
     print("After deleting")
-    user_controller.print_all_users()
+    user_service.print_all_users()
 
     print("Changing user data")
     user1_edited = RegisteredUser('Nadya', 'Pandelieva', 'nadezhda1106', 'nadezhdapandelieva@gmail.com', '1526874', 'image.png')
-    user_controller.edit_user_data(user1_edited)
-    user_controller.print_all_users()
+    user_service.edit_user_data(user1_edited)
+    user_service.print_all_users()
 
 
     p4 = Project('Day in Paris', 'These are pictures of my Erasmus project in Paris.', ['image1.png', 'image2.png', 'image3.png'], 'landscape',['Paris', 'sun', 'friends', 'feeling','image', 'good'])
@@ -34,34 +34,51 @@ if __name__ == '__main__':
                  'Sunglasses', ['sunglasses', 'friends', 'product', 'red', 'image'])
     p3 = Project('Lord of the Ring', 'Sceens of the film', ['image1.png', 'image2.pg', 'imageo3.png'], 'Film',
                  ['film', 'ring', 'lord', 'awesome'])
-    p = [p1, p3, p4]
+
+    #projects = [p1, p3, p4, p2, p5,p6,p7,p8,p9,p10,p11]
+
     project_repo1 = ProjectRepository("projects_user1.json", Project)
     project_repo2 = ProjectRepository("projects_user2.json", Project)
-    pr_controller1 = ProjectService(user1, project_repo1)
-    pr_controller2 = ProjectService(user2, project_repo2)
+    pr_service1 = ProjectService(user1, project_repo1)
+    pr_service2 = ProjectService(user2, project_repo2)
 
-    print("Projects")
-    pr_controller1.create_project(p1)
-    pr_controller1.create_project(p3)
-    pr_controller1.create_project(p4)
-    pr_controller2.create_project(p3)
-    pr_controller2.create_project(p4)
+    # TODO add more projects into the repo
+    # for p in projects:
+    #     pr_service1.create_project(p)
+    #
+    # print("Projects")
+    # pr_service1.create_project(p1)
+    # pr_service1.create_project(p3)
+    # pr_service1.create_project(p4)
+    # pr_service2.create_project(p3)
+    # pr_service2.create_project(p4)
+    #
+    # pr_service1.print_all_projects()
+    #
+    #
+    # print("After deleting")
+    #
+    # # pr_controller1.delete_project(p3)
+    # # pr_controller1.print_all_projects()
+    #
+    # print("Project: ", p1)
+    # print("Add like")
+    # user_service.add_like(p1, project_repo1)
+    # user_service.add_like(p1, project_repo1)
+    # user_service.add_like(p1, project_repo1)
+    # user_service.add_like(p1, project_repo1)
+    # print(p1)
+    #
 
-    pr_controller1.print_all_projects()
 
+    print("Top 10")
+    # pr_service1 += pr_service2
+    # pr_service1.print_all_projects()
+    #project_repo1 += project_repo2
+    # for p in project_repo1.find_all():
+    #     print(p.likes)
+    pr_service1.view_top_10()
 
-    print("After deleting")
-
-    # pr_controller1.delete_project(p3)
-    # pr_controller1.print_all_projects()
-
-    print("Project: ", p1)
-    print("Add like")
-    user_controller.add_like(p1, project_repo1)
-    user_controller.add_like(p1, project_repo1)
-    user_controller.add_like(p1, project_repo1)
-    user_controller.add_like(p1, project_repo1)
-    print(p1)
 
     # print("Found by tag")
     # for project in project_repo1.find_by_tag("image"):
