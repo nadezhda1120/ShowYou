@@ -18,7 +18,8 @@ class UserService:
     #not needed
     def add_user(self, user: RegisteredUser):
         # when user.json is empty and I try to add new user it raise error because of self._user_repository.load()
-        self.user_repository.find_all()
+        #self.user_repository.find_all()
+        self.user_repository.load()
         if self.user_repository.find_by_username(user.username) == None:
             self.user_repository.create(user)
             self.user_repository.save()
@@ -26,6 +27,16 @@ class UserService:
             print("User with this username already exist")
             #raise UserAlreadyExist(self._user_repository.find_by_username(user.username))
 
+    def create_account(self, user: RegisteredUser) -> RegisteredUser:
+        # when user.json is empty and I try to add new user it raise error because of self._user_repository.load()
+        self.user_repository.load()
+        if self.user_repository.find_by_username(user.username) == None:
+            created = self.user_repository.create(user)
+            self.user_repository.save()
+            return created
+        else:
+            print("User with this username already exist")
+            # raise UserAlreadyExist(self._user_repository.find_by_username(user.username))
 
     def edit_user_data(self,user: RegisteredUser):
         # what if someone want to change his username

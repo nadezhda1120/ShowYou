@@ -3,10 +3,6 @@ from entity.registered_user import RegisteredUser
 from exception.credentials_exception import CredentialsException
 
 
-class CredentialsException:
-    pass
-
-
 class SignInService:
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
@@ -20,6 +16,8 @@ class SignInService:
         if user is not None and user.password == password:
             self._singed_user = user
             return user
+        # else:
+        #     return None
         raise CredentialsException("Invalid username or password. Try again.")
 
     def sign_out(self) -> RegisteredUser:

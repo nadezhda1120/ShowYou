@@ -1,9 +1,11 @@
-
+from controller.sign_in_controller import SignInController
+from controller.user_controller import UserController
 from dao.user_repository import UserRepository
 from dao.project_repository import ProjectRepository
 from entity.project import Project
 from entity.admin import Admin
 from entity.registered_user import RegisteredUser
+from service.sign_in_service import SignInService
 from service.user_service import UserService
 from service.project_service import ProjectService
 
@@ -11,19 +13,31 @@ if __name__ == '__main__':
     user1 = RegisteredUser('Nadezhda', 'Pandelieva', 'nadezhda1106', 'nadezhdapa@gmail.com', '15264', 'image.png')
     user2 = RegisteredUser('Ivan', 'Popov', 'iv5941', 'ipopopv@abv.bg', '154896', 'image.png')
     user3 = RegisteredUser('Georgi', 'Georgiev', 'gg_2051', 'gg_200@gmail.com', '6384VCGHJK', 'image.png')
+    user4 = RegisteredUser('Ivo', 'Georgiev', 'ivo_2051', 'ivo_5200@gmail.com', '638CGHJK', 'image.png')
     users = [user1, user2, user3]
 
     users_repo = UserRepository("user.json", RegisteredUser)
     user_service = UserService(users_repo)
-    user_service.add_user(user1)
-    user_service.add_user(user2)
+    user_controller = UserController(user_service)
+    user_controller.create_account(user1)
+    user_controller.create_account(user4)
     user_service.print_all_users()
     #user_controller.delete_user(user1)
+
+
+    print("Test sign in")
+    sign_in_service = SignInService(users_repo)
+    sign_in_controller = SignInController(sign_in_service)
+    sign_in_service.sign_in('nadezhda1106', '15264')
+    sign_in_controller.get_signed_user()
+
+
+
     print("After deleting")
     user_service.print_all_users()
 
     print("Changing user data")
-    user1_edited = RegisteredUser('Nadya', 'Pandelieva', 'nadezhda1106', 'nadezhdapandelieva@gmail.com', '1526874', 'image.png')
+    user1_edited = RegisteredUser('Nadya', 'Pandelieva', 'nadezhda1106', 'nadezhdapandelieva@gmail.com', '1234', 'image.png')
     user_service.edit_user_data(user1_edited)
     user_service.print_all_users()
 

@@ -1,24 +1,46 @@
 [
     {
-        "id": "52d62dd0-b8dc-11ec-88b4-900f0c431cac",
+        "id": "11cc4a36-b987-11ec-9865-900f0c431cac",
         "email": "nadezhdapandelieva@gmail.com",
         "username": "nadezhda1106",
         "first_name": "Nadya",
         "last_name": "Pandelieva",
-        "password": "1526874",
+        "password": "1234",
         "role": "USER",
         "image": "image.png",
         "active": true
     },
     {
-        "id": "52d6d14f-b8dc-11ec-8122-900f0c431cac",
-        "email": "ipopopv@abv.bg",
-        "username": "iv5941",
-        "first_name": "Ivan",
-        "last_name": "Popov",
-        "password": "154896",
+        "id": "11cce5f5-b987-11ec-afc5-900f0c431cac",
+        "email": "ivo_5200@gmail.com",
+        "username": "ivo_2051",
+        "first_name": "Ivo",
+        "last_name": "Georgiev",
+        "password": "638CGHJK",
         "role": "USER",
         "image": "image.png",
+        "active": true
+    },
+    {
+        "id": "2a0162a4-b987-11ec-b110-900f0c431cac",
+        "email": "E-mail",
+        "username": "Username",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "password": "Password",
+        "role": "USER",
+        "image": null,
+        "active": true
+    },
+    {
+        "id": "5a386277-b9b8-11ec-9db1-900f0c431cac",
+        "email": "dfgrehrj",
+        "username": "qwfgehrt",
+        "first_name": "nadezhda",
+        "last_name": "pandeli",
+        "password": "Password",
+        "role": "USER",
+        "image": null,
         "active": true
     }
 ]

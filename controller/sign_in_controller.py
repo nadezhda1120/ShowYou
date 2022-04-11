@@ -6,4 +6,13 @@ class CredentialsException:
 
 
 class SignInController:
-    pass
+    def __init__(self, service: SignInService, view = None):
+        self.service = service
+        self.view = view
+
+    def sign_in(self, username, password):
+        self.service.sign_in(username, password)
+
+    def get_signed_user(self):
+        self.service.get_signed_user()
+
