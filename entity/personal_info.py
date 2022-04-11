@@ -13,7 +13,7 @@ class Role(Enum):
         return self.name
 
 class PersonalInfo:
-    def __init__(self, id = None, first_name = None, last_name = None, username = None, email = None,  password = None, role = Role.USER):
+    def __init__(self, id = None, first_name = None, last_name = None, username = None, email = None,  password = None, role = None):
         self.id = id
         self.email = email
         self.username = username
@@ -28,6 +28,6 @@ class PersonalInfo:
     #     return repr
 
     def __str__(self):
-        return f'|{str(self.id):10s} | {self.first_name:10s} |  {self.last_name:10s} | { self.username:15s} | {self.password} | {str(self.role):5s}'
+        return f'|{str(self.id):10s} | {self.first_name:10s} |  {self.last_name:10s} | { self.username:15s} | {self.password:20s} | {str(self.role):5s}'
 
 

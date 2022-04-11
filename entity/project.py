@@ -1,7 +1,7 @@
 #from entity.registeredUser import RegisteredUser
-import imghdr
 from datetime import datetime
-from view.comment import Comment
+
+
 # upload image
 class Project:
     next_id = 1  # unique id sequence
@@ -24,18 +24,12 @@ class Project:
         self.likes = 0
         self.comments = []
         #self._idProject = self.__class__.next_id
+
+
         #section
-        #list of comments
         #when was created
         #when was last modified
         # every project should be able to be downloaded in printable format
-
-    # add list of images
-
-    def top_10(self):
-        #sorted projects by likes (first 10)
-        pass
-
 
     def __str__(self):
         return  f"| {self.id} | {str(self.title):20s} | {str(self.author):10s} | {self.description} | {str(self.likes)} | {str(self.images)} | {', '.join(self.tags)} |"

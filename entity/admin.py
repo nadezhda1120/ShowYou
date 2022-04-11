@@ -4,9 +4,10 @@ from entity.personal_info import PersonalInfo, Role
 
 
 class Admin(PersonalInfo):
-    def __init__(self, first_name, last_name, username,email,  password, id = None, role=Role.ADMIN) :
-        super.__init__(self, first_name, last_name, username,email, password, role, id)
+    def __init__(self, first_name=None, last_name =None, username =None, email =None,  password =None, id=None, role = Role.ADMIN) :
+        super().__init__(id, first_name, last_name, username, email, password,role)
         #self.org_number = org_number
+        #generate another id
 
     def edit_comment(self):
         pass
@@ -24,4 +25,4 @@ class Admin(PersonalInfo):
         pass
 
     def __str__(self):
-        return f'{super.__str__()} {self.org_number} |'
+        return f'{super().__str__()} |'
