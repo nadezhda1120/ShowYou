@@ -1,10 +1,9 @@
-from controller.project_controller import ProjectService
-from controller.user_controller import UserService
+
 from dao.user_repository import UserRepository
 from dao.project_repository import ProjectRepository
 from entity.project import Project
+from entity.admin import Admin
 from entity.registered_user import RegisteredUser
-from view.comment import Comment
 from service.user_service import UserService
 from service.project_service import ProjectService
 
@@ -27,6 +26,21 @@ if __name__ == '__main__':
     user1_edited = RegisteredUser('Nadya', 'Pandelieva', 'nadezhda1106', 'nadezhdapandelieva@gmail.com', '1526874', 'image.png')
     user_service.edit_user_data(user1_edited)
     user_service.print_all_users()
+
+    # admin - self, first_name, last_name, username, email,  password, id = None, role=Role.ADMIN
+    print("admin")
+    admin1 = Admin('Nadezhda', 'Pandelieva', 'nadezhda1106', 'nadezhdapa@gmail.com', '15few264')
+    admin2 = Admin('Ivan', 'Popov', 'iv5941', 'ipopopv@abv.bg', '154fw896')
+    admin3 = Admin('Georgi', 'Georgiev', 'ggf_2051', 'gg_200@gmail.com', '6384VCGfweHJK')
+    admins = [admin1, admin2, admin3]
+
+    admins_repo = UserRepository("admin.json", Admin)
+    admins_service = UserService(admins_repo)
+
+    for admin in admins:
+        admins_service.add_user(admin)
+
+    admins_service.print_all_users()
 
 
     p4 = Project('Day in Paris', 'These are pictures of my Erasmus project in Paris.', ['image1.png', 'image2.png', 'image3.png'], 'landscape',['Paris', 'sun', 'friends', 'feeling','image', 'good'])

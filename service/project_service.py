@@ -1,13 +1,16 @@
 from dao.idGenerator import IdGeneratorUuid
 from dao.project_repository import ProjectRepository
+from entity.personal_info import Role
 from entity.project import Project
 from entity.registered_user import RegisteredUser
-from view.comment import Comment
+from exception.authorization_exception import AuthorizationError
+from entity.comment import Comment
+
 
 class ProjectService:
     comment_id_generator = IdGeneratorUuid()
 
-    def __init__(self, current_user: RegisteredUser, project_repo: ProjectRepository):
+    def __init__(self, current_user, project_repo: ProjectRepository):
         self._current_user = current_user
         self._project_repository = project_repo
 
@@ -24,6 +27,7 @@ class ProjectService:
 
     def create_project(self, project: Project):
         # TODO validation
+        self._project_repository.find_all()
         project.author = self._current_user.username
         self._project_repository.create(project)
         self._project_repository.save()
@@ -33,13 +37,19 @@ class ProjectService:
         current_project.title = edited_project.title
         current_project.images = edited_project.images
         current_project.tags = edited_project.tags
-        current_project.subject =edited_project.subject
+        current_project.subject = edited_project.subject
         self.update_project(current_project)
 
     def delete_project(self, project: Project):
+        #check if user have permissions
         self._project_repository.load()
-        self._project_repository.delete_by_id(project.id)
-        self.save_project()
+        # self._project_repository.find_all()
+        if project.author is self._current_user.username or self._current_user.role is Role.ADMIN:
+            self._project_repository.delete_by_id(project.id)
+            self.save_project()
+        else:
+            raise AuthorizationError("User must have permissions")
+
 
     #should implement delete_project by title, author
 
@@ -52,8 +62,9 @@ class ProjectService:
     def edit_comment(self, current_comment: Comment, edited_comment: Comment):
         def update_project_comment(c_id):
             for project in self._project_repository.find_all():
+                #results = find(lambda comment: comment.commentID == c_id and self._current_user.username == comment.creator, project.comments)
                 for comment in project.comments:
-                    if c_id == comment.commentID:
+                    if c_id == comment.commentID and self._current_user.username == comment.creator:
                         comment.content = edited_comment.content
                         self.update_project(project)
         update_project_comment(current_comment.commentID)
@@ -61,6 +72,7 @@ class ProjectService:
 
     def delete_comment(self,user: RegisteredUser, comment: Comment):
         # TODO fix the error
+        # check if user.username == self._current_user.username and self._current.user.role == Role.Admin
         for project in self._project_repository.find_all():
             for c in project.comments:
                 print(f'{type(comment.content)} |  {type(user.username)}')
@@ -83,6 +95,7 @@ class ProjectService:
 
     def save_project(self):
         self._project_repository.save()
+        print("Books saved successfully.")
 
     def update_project(self, project):
         self._project_repository.update(project)

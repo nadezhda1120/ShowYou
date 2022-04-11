@@ -7,22 +7,24 @@ class CredentialsException:
     pass
 
 
-class LoginService:
+class SignInService:
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
-        self._logged_user = None
+        self._singed_user = None
 
 
-    def login(self, username: str, password: str) -> RegisteredUser:
+    def sign_in(self, username: str, password: str) :
+        #load
+        self.user_repository.load()
         user = self.user_repository.find_by_username(username)
         if user is not None and user.password == password:
-            self._logged_user = user
+            self._singed_user = user
             return user
         raise CredentialsException("Invalid username or password. Try again.")
 
-    def logout(self) -> RegisteredUser:
-        self._logged_user = None
+    def sign_out(self) -> RegisteredUser:
+        self._singed_user = None
 
-    def get_logged_user(self) -> RegisteredUser | None:
-        return self._logged_user
+    def get_signed_user(self) -> RegisteredUser | None:
+        return self._singed_user
 

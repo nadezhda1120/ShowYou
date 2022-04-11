@@ -8,18 +8,19 @@ class ProjectRepository(JsonRepository):
     #in json I'm saving only the username of the creator
     #i'm wondering won't it be better to save the whole information about the user
     # to be like in the DB to have connection between User and Project
-    def find_by_author(self, username: str) -> list[Project] | None:
+    def find_by_user(self, username: str) -> list[Project] | None:
         project_list = self.find_all()
         results = find(lambda project: project.author == username, project_list)
         return results
+        #if none raise ProjectNotFound
 
-    def find_by_tag(self, tag) -> Project | None:
-        tag_lower = tag.lower()
+    def find_by_tag(self, searched_tag) -> Project | None:
+        lower_tag = searched_tag.lower()
         project_list = self.find_all()
         results = []
         for project in project_list:
-            for t in project.tags:
-                if tag_lower in t.lower():
+            for tag in project.tags:
+                if lower_tag in tag.lower():
                     results.append(project)
                     break
         return results
@@ -30,8 +31,9 @@ class ProjectRepository(JsonRepository):
     def find_by_title(self, title) -> list[Project]:
         title_to_lower = title.lower()
         projects_list = self.find_all()
-        results = find(lambda project: title_to_lower in project.title.lower() , projects_list)
+        results = find(lambda project: title_to_lower in project.title.lower(), projects_list)
         return results
+        #raise exception
 
 
 

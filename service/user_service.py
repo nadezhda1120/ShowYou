@@ -18,7 +18,7 @@ class UserService:
     #not needed
     def add_user(self, user: RegisteredUser):
         # when user.json is empty and I try to add new user it raise error because of self._user_repository.load()
-        self.user_repository.load()
+        self.user_repository.find_all()
         if self.user_repository.find_by_username(user.username) == None:
             self.user_repository.create(user)
             self.user_repository.save()
@@ -50,7 +50,7 @@ class UserService:
         project_repo.save()
 
     def print_all_users(self):
-        self.user_repository.load()
+        #self.user_repository.load()
         for user in self.user_repository.find_all():
             print(user)
 
