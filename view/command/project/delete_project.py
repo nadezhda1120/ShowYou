@@ -6,6 +6,6 @@ class DeleteProjectCommand:
         self.project_controller = project_controller
 
     def __call__(self, *args, **kwargs):
-        #TODO show add book dialog
+        #TODO show added project dialog
         #self.project_controller.delete_project()
         print("Showing 'Delete Books' dialog")

@@ -152,12 +152,12 @@ class SignUp:
         # date-birth -------------------------------------------------
         # home town
 
-        role_combo_box = Combobox(self.frame, textvariable=self.role,
-                             values=[
-                                 "user",
-                                 "admin"], width=45)
-        role_combo_box.insert(0,'Role')
-        role_combo_box.place(x=70, y=300)
+        # role_combo_box = Combobox(self.frame, textvariable=self.role,
+        #                      values=[
+        #                          "user",
+        #                          "admin"], width=45)
+        # role_combo_box.insert(0,'Role')
+        # role_combo_box.place(x=70, y=300)
 
         # -----------------------------------------------------------------------------
         # in button place command=validateLogIn

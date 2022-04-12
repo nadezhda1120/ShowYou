@@ -12,6 +12,8 @@ from service.user_service import UserService
 from sing_up_screen import SignUp
 import ast
 
+# TODO make it in class
+
 root= Tk()
 root.title('Sign in')
 root.geometry('925x500+300+200')
@@ -44,7 +46,6 @@ def sign_in():
         screen.config(bg='white')
         Label(screen, text='Hello EveryOne!', bg='#fff', font=('Microsoft YaHei UI Light', 50, 'bold')).pack(
             expand=True)
-        # print('Successfully Logged In')
 
         screen.mainloop()
     except CredentialsException as ex:
